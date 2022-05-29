@@ -1,0 +1,92 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - sugar
+  - inform
+  - answer
+
+entities:
+  - sugar_reading
+  - concern
+  - missed_medicine
+
+
+slots:
+  concern:
+    type: categorical
+    values:
+      - Diabetes
+      - Weight
+      - Others
+    mappings:
+      - type: from_entity
+        entity: concern
+
+  fasting:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: sugar_reading
+
+  missed_medicine:
+    type: bool
+    mappings:
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
+
+
+
+responses:
+
+  utter_options:
+  - text: "Let is help you, Please choose the options 1. Looking for a diet chart 2. Want to meet a Doctor 3. Interested in Diabetes reversal 4. I am facing issues related to eye, kidney 5. Need help with diabetes 6. Need information on Diabetes 7. FAQs"
+
+  utter_greet_ask_concern:
+  - text: "Hi, what are your key concerns: Diabetes, Weight, others?"
+
+  utter_greet:
+    - text: "Hi, how are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+  - ask_sugar_level
+  - ask_sleep_quality
+  - ask_sugar_reading
+  - action_choose_concern
+  - action_check_sugar
+  - action_forgot_medicine
+
+
+
+
+

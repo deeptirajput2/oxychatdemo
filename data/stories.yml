@@ -1,0 +1,46 @@
+version: "3.1"
+
+stories:
+
+- story: happy path oxyjon
+  steps:
+  - intent: greet
+  - action: utter_greet_ask_concern
+  - intent: inform
+  - action: action_choose_concern
+  - intent: sugar
+  - action: action_check_sugar
+  - intent: answer
+  - action: action_forgot_medicine
+
+
+#- story: happy path
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_great
+#  - action: utter_happy
+
+#- story: sad path 1
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_unhappy
+#  - action: ask_sugar_level
+##  - action: utter_did_that_help
+#  - intent: affirm
+#  - action: ask_sugar_reading
+#  - intent: sugar
+#  - action: ask_sleep_quality
+#  - intent: mood_great
+#  - action: utter_goodbye
+
+#- story: sad path 2
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_unhappy
+#  - action: ask_sugar_level
+ # - action: utter_did_that_help
+ # - intent: deny
+  #- action: utter_goodbye
